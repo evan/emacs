@@ -1,0 +1,3 @@
+[submodule "local/scala-ensime"]
+	path = local/scala-ensime
+	url = git://github.com/aemoncannon/ensime.git
