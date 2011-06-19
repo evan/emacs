@@ -1,0 +1,43 @@
+;; swap command and option (to meta and super)
+;; use option key for all mac shortcuts, e.g. ⌘Q -> ⌥Q
+(setq ns-command-modifier 'meta)
+(setq ns-option-modifier 'super)
+(setq ns-function-modifier 'control)
+
+;; because I stupidly hit ⌘-C (meta-c in my setup) all the time, which
+;; default is bound to capitalize-word, which is the source of all
+;; sorts of wonderful typo bugs
+(global-unset-key [(meta c)])
+
+;; Control tab instead of C-x b
+(global-set-key [(control tab)]  'ido-switch-buffer)
+
+;; Bind text-scale-increase to C-= to have parity with
+;; text-scale-decrease
+(global-set-key [(control =)] 'text-scale-increase)
+
+
+;; moving windows
+(global-set-key [(meta down)] 'windmove-down)
+(global-set-key [(meta up)] 'windmove-up)
+(global-set-key [(meta left)] 'windmove-left)
+(global-set-key [(meta right)] 'windmove-right)
+;;(global-set-key [(meta \`)] 'other-frame)
+(global-set-key [(meta \`)] 'next-multiframe-window)
+(global-set-key [(super \`)] 'next-multiframe-window)
+
+;; widow proportions
+(global-set-key [(shift meta down)] 'shrink-window)
+(global-set-key [(shift meta up)] 'enlarge-window)
+(global-set-key [(shift meta left)] 'shrink-window-horizontally)
+(global-set-key [(shift meta right)] 'enlarge-window-horizontally)
+
+;; mouse scroll behavior
+(setq mouse-wheel-scroll-amount '(2 ((shift) . 3))) ;; one line at a time
+(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+(setq scroll-step 1) ;; keyboard scroll one line at a time
+
+;; fullscreen mode
+(if (fboundp 'ns-toggle-fullscreen)
+    (global-set-key [(shift super f)] 'ns-toggle-fullscreen))
