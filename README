@@ -1,0 +1,16 @@
+Current installed elpa packages:
+
+- color-theme           6.6.1
+- find-file-in-git-repo 0.1.2
+- haskell-mode          2.8.0
+- idle-highlight        1.0
+- magit                 1.0.0
+- paredit               22
+- scala-mode            0.0.2
+- scpaste               0.5
+- smex                  1.1.1
+- starter-kit           2.0
+- starter-kit-js        2.0
+- starter-kit-lisp      2.0
+- starter-kit-ruby      2.0
+- yaml-mode             0.0.7
