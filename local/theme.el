@@ -103,8 +103,6 @@ Ported to Emacs by Greg Pfeil, http://ethanschoonover.com/solarized."
          (cursor ($ prop 'cursor foreground))
          (border ($ prop 'border foreground))
          (bg-mode ($ prop 'bg-mode 'light))
-         (font-height ($ prop 'font-height nil))
-         (font-family ($ prop 'font-family nil))
 
          ;; colors
 
@@ -175,9 +173,9 @@ Ported to Emacs by Greg Pfeil, http://ethanschoonover.com/solarized."
        (view-highlight-face . highlight))
 
       ,@(append extra-faces
-                `((default ((t (:foreground ,foreground :background ,background :height ,font-height :family ,font-family
-                                           :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil
-                                           :underline nil :slant normal :weight normal :width normal))))
+                `((default ((t (:foreground ,foreground :background ,background :stipple nil
+                                            :inverse-video nil :box nil :strike-through nil :overline nil
+                                            :underline nil :slant normal :weight normal :width normal))))
 
                   (bold ((t (:bold t))))
                   (bold-italic ((t (:bold t :italic t))))
@@ -395,9 +393,7 @@ Ported to Emacs by Greg Pfeil, http://ethanschoonover.com/solarized."
   (color-theme-install
    `(color-theme-mf-dark
      ,@(mf-color-theme-template
-        '((font-height 120)
-          (font-family "apple-Inconsolata")
-          (foreground "#dddddd")
+        '((foreground "#dddddd")
           (background "#171717")
           (border "#171717")
           (cursor "#888888")
@@ -440,17 +436,6 @@ Ported to Emacs by Greg Pfeil, http://ethanschoonover.com/solarized."
           (show-paren-match-face ((t (:background "gray22"))))
           (show-paren-mismatch-face ((t (:foreground "white" :background "red")))))))))
 
-(defun color-theme-mf-dark-menlo ()
-  (interactive)
-
-  (color-theme-mf-dark)
-  (let ((color-theme-is-cumulative t))
-    (color-theme-install
-     '(color-theme-mf-dark-menlo
-       ()
-       (default ((t (:foreground "#dddddd" :background "#171717" :height 120 :family "apple-menlo"
-                                 :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil
-                                 :underline nil :slant normal :weight normal :width normal))))))))
 
 (defun color-theme-mf-light ()
   (interactive)
@@ -458,9 +443,7 @@ Ported to Emacs by Greg Pfeil, http://ethanschoonover.com/solarized."
   (color-theme-install
    `(color-theme-mf-light
      ,@(mf-color-theme-template
-        '((font-height 130)
-          (font-family "apple-helvetica neue")
-          (cursor "IndianRed2")
+        '((cursor "IndianRed2")
 
           (red ("brown4" "red" "RosyBrown1"))
           (green ("chartreuse4" "green4" "DarkOliveGreen1"))
@@ -493,4 +476,4 @@ Ported to Emacs by Greg Pfeil, http://ethanschoonover.com/solarized."
           (show-paren-match-face ((t (:background "#fff4d0"))))
           (show-paren-mismatch-face ((t (:foreground "white" :background "red")))))))))
 
-(color-theme-mf-dark-menlo)
+(color-theme-mf-dark)
