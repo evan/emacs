@@ -7,7 +7,6 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
-
 ;; load path etc.
 
 (setq dotfiles-dir (file-name-directory
@@ -21,8 +20,8 @@
 (package-initialize)
 
 ;; If this is Cocoa emacs, gimme back the menu bar.
-(if (and (fboundp 'menu-bar-mode) (eq window-system 'ns))
-    (menu-bar-mode 1))
+(if (and (fboundp 'menu-bar-mode) (eq window-system 'ns)) (menu-bar-mode 1))
+
 
 ;; common libraries
 
@@ -36,10 +35,16 @@
 
 ;; local config bootstrap
 
-(setq local-extras-dir (concat dotfiles-dir "local"))
-(add-to-list 'load-path local-extras-dir)
+(defun concat-path (&rest elems)
+  "Concats path segments in a system agnostic manner"
+  (if (= 1 (length elems))
+    (car elems)
+    (concat (file-name-as-directory (car elems)) (apply 'concat-path (cdr elems)))))
+
+(setq local-extras-dir (concat-path dotfiles-dir "local"))
 
 (if (file-exists-p local-extras-dir)
-    (mapc #'load (directory-files local-extras-dir nil ".*el$")))
+    (mapc (lambda (extra) (load (concat-path local-extras-dir extra)))
+          (directory-files local-extras-dir nil ".*el$")))
 
 (load custom-file 'noerror)

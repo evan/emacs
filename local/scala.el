@@ -1,4 +1,4 @@
-(add-to-list 'load-path (concat local-extras-dir "/scala-ensime/dist/elisp"))
+(add-to-list 'load-path (concat-path local-extras-dir "scala-ensime/dist/elisp"))
 
 (require 'scala-mode)
 (require 'ensime)

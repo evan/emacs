@@ -4,6 +4,11 @@
 (setq ns-option-modifier 'super)
 (setq ns-function-modifier 'control)
 
+;; CUA
+(cua-mode t)
+(setq cua-keep-region-after-copy t)
+(transient-mark-mode 1)
+
 ;; because I stupidly hit ⌘-C (meta-c in my setup) all the time, which
 ;; default is bound to capitalize-word, which is the source of all
 ;; sorts of wonderful typo bugs

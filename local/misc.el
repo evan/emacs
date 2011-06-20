@@ -16,8 +16,8 @@
 (setq show-paren-style 'expression)
 
 ;; put autosaves in the same directory as backups
-(setq auto-save-list-file-prefix (concat dotfiles-dir "backups/"))
-(setq auto-save-file-name-transforms `((".*" ,(concat dotfiles-dir "backups/") t)))
+(setq auto-save-list-file-prefix (concat-path dotfiles-dir (file-name-as-directory "backups")))
+(setq auto-save-file-name-transforms `((".*" ,(concat-path dotfiles-dir (file-name-as-directory "backups")) t)))
 
 (defun m-ido-complete-or-next ()
   "if there is only one ido match, use it, otherwise select the next"
