@@ -241,7 +241,7 @@ Ported to Emacs by Greg Pfeil, http://ethanschoonover.com/solarized."
                   (font-lock-type-face ((t (:foreground ,green-fg))))
                   (font-lock-variable-name-face ((t (:foreground ,yellow-hi))))
                   (font-lock-warning-face ((t (:foreground ,red-fg :bold t))))
-                  (fringe ((t (:background ,gray-bg))))
+                  (fringe ((t (:foreground ,gray-bg :background ,gray-bg))))
                   (gnus-cite-attribution-face ((t (:italic t))))
                   (gnus-cite-face-1 ((t (:foreground ,blue-hi))))
                   (gnus-cite-face-10 ((t (:foreground ,purple-fg))))
