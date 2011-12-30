@@ -19,9 +19,12 @@
 (add-to-list 'package-archives '("elpa" . "http://tromey.com/elpa/"))
 (package-initialize)
 
-;; If this is Cocoa emacs, gimme back the menu bar.
-(if (and (fboundp 'menu-bar-mode) (eq window-system 'ns)) (menu-bar-mode 1))
 
+;; package manifest
+
+(load (concat dotfiles-dir "manifest-init.el"))
+(defvar manifest-file (concat dotfiles-dir "package-manifest.el"))
+(manifest-install-missing-packages)
 
 ;; common libraries
 
@@ -32,6 +35,9 @@
 (require 'ansi-color)
 (require 'recentf)
 
+
+;; If this is Cocoa emacs, gimme back the menu bar.
+(if (and (fboundp 'menu-bar-mode) (eq window-system 'ns)) (menu-bar-mode 1))
 
 ;; local config bootstrap
 
