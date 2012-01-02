@@ -1,4 +1,4 @@
-;; pairs are (package-name package-main-function)
+;; pairs are (package-name package-version-list
 
-((smex . smex)
- (deft . deft))
+((smex . nil)
+ (deft . (0 3)))

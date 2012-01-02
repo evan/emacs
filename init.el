@@ -23,7 +23,6 @@
 ;; package manifest
 
 (load (concat dotfiles-dir "manifest-init.el"))
-(defvar manifest-file (concat dotfiles-dir "package-manifest.el"))
 (manifest-install-missing-packages)
 
 ;; common libraries
