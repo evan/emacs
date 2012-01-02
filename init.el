@@ -9,20 +9,20 @@
 
 ;; load path etc.
 
-(setq dotfiles-dir (file-name-directory
-                    (or (buffer-file-name) load-file-name)))
+(setq dotfiles-dir (file-name-directory (or (buffer-file-name) load-file-name)))
+
+(add-to-list 'load-path dotfiles-dir)
 
 (setq custom-file (concat dotfiles-dir "custom.el"))
 
+;; packages and manifest
+
 (require 'package)
+(require 'manifest)
+
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("elpa" . "http://tromey.com/elpa/"))
 (package-initialize)
-
-
-;; package manifest
-
-(load (concat dotfiles-dir "manifest-init.el"))
 (manifest-install-missing-packages)
 
 ;; common libraries
