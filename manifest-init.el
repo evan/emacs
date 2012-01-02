@@ -82,6 +82,7 @@
     (dolist (package packages)
       (package-install package))))
 
+;;;###autoload
 (defun manifest-install-missing-packages ()
   "Installs missing packages if necessary."
   (interactive)
@@ -90,6 +91,7 @@
   (manifest-install-packages manifest-missing-packages)
   (message "Missing packages installed."))
 
+;;;###autoload
 (defun manifest-update-packages ()
   "Installs all packages."
   (interactive)
@@ -97,3 +99,5 @@
   (message "Updating manifest packages...")
   (manifest-install-packages (mapcar 'car manifest-package-alist))
   (message "Packages updated."))
+
+(provide 'manifest)
