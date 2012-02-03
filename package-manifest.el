@@ -1,6 +1,7 @@
 ;; pairs are (package-name package-version-list
 
-((color-theme . nil)
+((browse-kill-ring . nil)
+ (color-theme . nil)
  (deft . nil)
  (find-file-in-git-repo . nil)
  (find-file-in-project . nil)
