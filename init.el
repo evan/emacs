@@ -38,6 +38,13 @@
 ;; If this is Cocoa emacs, gimme back the menu bar.
 (if (and (fboundp 'menu-bar-mode) (eq window-system 'ns)) (menu-bar-mode 1))
 
+;; If we are not in a shell, extract the PATH. (Here's looking at you, OS X)
+(if (not (getenv "TERM_PROGRAM"))
+    (let ((shell-path (shell-command-to-string "$SHELL -i -c 'printf $PATH'")))
+      (setenv "PATH" shell-path)
+      (setq exec-path (delete-dups (append (split-string shell-path path-separator) exec-path)))))
+
+
 ;; local config bootstrap
 
 (defun concat-path (&rest elems)
