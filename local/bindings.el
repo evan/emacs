@@ -9,6 +9,14 @@
 (setq cua-keep-region-after-copy t)
 (transient-mark-mode 1)
 
+;; C-g clears the current region, but typing C-c C-g in quick
+;; succession doesn't work. Define C-c C-g to work correctly
+(defun local--copy-region-and-deselect ()
+  (interactive)
+  (copy-region-as-kill)
+  (keyboard-quit))
+(global-set-key (kbd "C-c C-g") 'local--copy-region-and-deselect)
+
 ;; because I stupidly hit ⌘-C (meta-c in my setup) all the time, which
 ;; default is bound to capitalize-word, which is the source of all
 ;; sorts of wonderful typo bugs
