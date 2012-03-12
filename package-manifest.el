@@ -10,6 +10,7 @@
  (lambdacalc . nil)
  (magit . nil)
  (markdown-mode . nil)
+ (coffee-mode . nil)
  (maxframe . nil)
  (paredit . nil)
  (scala-mode . nil)
