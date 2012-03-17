@@ -1,11 +1,16 @@
-(add-to-list 'load-path (concat-path local-extras-dir "scala-ensime/dist/elisp"))
-
 (require 'scala-mode)
-(require 'ensime)
+
+(setq fauna-ensime-path (concat-path (getenv "HOME") "fauna/.util/deps/cache/ensime/elisp/"))
+
+(defvar ensime-elisp-path fauna-ensime-path
+  "Path in which to find an ensime installation")
+
+(when (file-exists-p (concat-path ensime-elisp-path "ensime.el"))
+  (add-to-list 'load-path ensime-elisp-path)
+  (require 'ensime)
+  (add-hook 'scala-mode-hook 'ensime-scala-mode-hook))
 
 (add-hook 'scala-mode-hook (lambda () (local-unset-key [(control tab)])))
-(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
-
 (define-key scala-mode-map (kbd "M-q") 'fill-paragraph)
 
 ;; (defun scala-block-indentation ()

@@ -70,7 +70,7 @@
 
     (when (null manifest)
       (if (file-readable-p file)
-        (message "Failed to load manifest. Invalid format.")
+          (message "Failed to load manifest. Invalid format.")
         (message (format "Failed to load manifest. '%s' is not readable." manifest-file))))
 
     (setq manifest-package-alist manifest)))
