@@ -13,7 +13,7 @@
 ;; succession doesn't work. Define C-c C-g to work correctly
 (defun local--copy-region-and-deselect ()
   (interactive)
-  (copy-region-as-kill)
+  (copy-region-as-kill (region-beginning) (region-end))
   (keyboard-quit))
 (global-set-key (kbd "C-c C-g") 'local--copy-region-and-deselect)
 
