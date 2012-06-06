@@ -33,3 +33,7 @@
 
 (defadvice keyboard-escape-quit (around my-keyboard-escape-quit activate)
   (flet ((one-window-p (&optional nomini all-frames) t)) ad-do-it))
+
+(defadvice list-buffers (after list-buffers-and-switch activate)
+  (unless (equal (buffer-name) "*Buffer List*")
+    (pop-to-buffer "*Buffer List*")))
