@@ -1,3 +1,6 @@
+;; echo keystrokes more quickly than after 1 second
+(setq echo-keystrokes 0.2)
+
 ;; swap command and option (to meta and super)
 ;; use option key for all mac shortcuts, e.g. ⌘Q -> ⌥Q
 (setq ns-command-modifier 'meta)
@@ -21,6 +24,7 @@
 ;; default is bound to capitalize-word, which is the source of all
 ;; sorts of wonderful typo bugs
 (global-unset-key [(meta c)])
+(global-set-key [(meta C)] 'capitalize-word)
 
 ;; Control tab instead of C-x b
 (global-set-key [(control tab)]  'ido-switch-buffer)
@@ -29,6 +33,8 @@
 ;; text-scale-decrease
 (global-set-key [(control =)] 'text-scale-increase)
 
+;; make meta forward-delete an alias for meta d
+(global-set-key [(meta kp-delete)] [(meta d)])
 
 ;; moving windows
 (global-set-key [(meta down)] 'windmove-down)
