@@ -5,16 +5,16 @@
   (interactive)
   (let ((frame (make-frame)))
 	(select-frame-set-input-focus frame)
-	
+
 	(if (get-buffer "*scratch*")
 	    (switch-to-buffer "*scratch*" 'norecord))))
-  
-(global-set-key [(super n)] 'new-frame-with-scratch)
+
+(m-global-set-key [(super n)] 'new-frame-with-scratch)
 
 
 ;; emulate Cmd-W behavior. gleaned from aquamacs
 (defun close-window ()
-  "Emulate Mac default Cmd-W behavior: close the current window and 
+  "Emulate Mac default Cmd-W behavior: close the current window and
     recursively whatever its container is up to the last frame."
   (interactive)
   ;; quit from minibuffer
@@ -51,4 +51,4 @@
 	     (switch-to-buffer "*scratch*" 'norecord)))
        (make-frame-invisible f t)))))
 
-(global-set-key [(super w)] 'close-window)
+(m-global-set-key [(super w)] 'close-window)

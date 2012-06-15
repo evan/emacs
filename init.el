@@ -1,4 +1,4 @@
-;; hello, world.
+(message "hello, world.")
 
 (add-to-list 'default-frame-alist
 ;;           '(font . "-apple-Helvetica_Neue-medium-normal-normal-*-13-*-*-*-p-0-iso10646-1"))
@@ -45,6 +45,12 @@
       (setq exec-path (delete-dups (append (split-string shell-path path-separator) exec-path)))))
 
 
+;; Create a minor mode for custom global bindings. Groups these in one
+;; place and prevents them from being taken over otherwise.
+(defvar m-global-keys-map (make-keymap) "Custom bindings minor mode")
+
+(defun m-global-set-key (key def) (define-key m-global-keys-map key def))
+
 ;; local config bootstrap
 
 (defun concat-path (&rest elems)
@@ -60,3 +66,29 @@
           (directory-files local-extras-dir nil ".*el$")))
 
 (load custom-file 'noerror)
+
+;; Enable global bindings
+
+(define-minor-mode m-global-keys-minor-mode
+  "Minor mode that groups all custom global bindings."
+  :init-value t
+  :lighter ""
+  :keymap m-global-keys-map)
+
+(defun m-enable-global-keys () (interactive) (m-global-keys-minor-mode 1))
+(defun m-disable-global-keys () (interactive) (m-global-keys-minor-mode 0))
+
+(defun m-prioritize-global-keys ()
+  "Attempt to ensure that m-global-keys always has priority."
+  (interactive)
+  (if (not (eq (car (car minor-mode-map-alist)) 'm-global-keys-minor-mode))
+      (let ((mykeys (assq 'm-global-keys-minor-mode minor-mode-map-alist)))
+        (assq-delete-all 'm-global-keys-minor-mode minor-mode-map-alist)
+        (add-to-list 'minor-mode-map-alist mykeys))))
+
+(add-hook 'minibuffer-setup-hook 'm-disable-global-keys)
+
+(m-enable-global-keys)
+
+(defadvice load (after m-prioritize-global-keys activate)
+  (m-prioritize-global-keys))
