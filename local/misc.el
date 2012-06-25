@@ -5,6 +5,9 @@
 ;; scratch does not start out as elisp
 (setq initial-major-mode 'fundamental-mode)
 
+;; Auto-reload unmodified buffers if the underlying file changes.
+(global-auto-revert-mode t)
+
 ;; tab sanity
 (setq standard-indent 2)
 (setq c-basic-offset 2)
