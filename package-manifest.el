@@ -1,6 +1,7 @@
 ;; pairs are (package-name package-version-list
 
 ((browse-kill-ring . nil)
+ (coffee-mode . nil)
  (color-theme . nil)
  (deft . nil)
  (find-file-in-git-repo . nil)
@@ -10,7 +11,6 @@
  (lambdacalc . nil)
  (magit . nil)
  (markdown-mode . nil)
- (coffee-mode . nil)
  (maxframe . nil)
  (paredit . nil)
  (scala-mode . nil)
