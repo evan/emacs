@@ -22,6 +22,10 @@
 (setq auto-save-list-file-prefix (concat-path dotfiles-dir (file-name-as-directory "backups")))
 (setq auto-save-file-name-transforms `((".*" ,(concat-path dotfiles-dir (file-name-as-directory "backups")) t)))
 
+;; disable find-file-at-point
+(setq ffap-machine-p-known 'reject)
+(setq ido-use-filename-at-point nil)
+
 (defun m-ido-complete-or-next ()
   "if there is only one ido match, use it, otherwise select the next"
   (interactive)
