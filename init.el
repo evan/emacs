@@ -10,7 +10,6 @@
              '(font . "-apple-Menlo-medium-normal-normal-*-11-*-*-*-m-0-iso10646-1"))
 (add-to-list 'default-frame-alist '(left-fringe . 1))
 (add-to-list 'default-frame-alist '(right-fringe . 1))
-(setq-default indicate-empty-lines nil)
 
 ;; load path etc.
 
@@ -39,7 +38,6 @@
 (require 'ansi-color)
 (require 'recentf)
 
-
 ;; If this is Cocoa emacs, gimme back the menu bar.
 (if (and (fboundp 'menu-bar-mode) (eq window-system 'ns)) (menu-bar-mode 1))
 
@@ -49,6 +47,8 @@
       (setenv "PATH" shell-path)
       (setq exec-path (delete-dups (append (split-string shell-path path-separator) exec-path)))))
 
+;; do not indicate empty lines
+(setq-default indicate-empty-lines nil)
 
 ;; Create a minor mode for custom global bindings. Groups these in one
 ;; place and prevents them from being taken over otherwise.
