@@ -1,11 +1,16 @@
 (message "hello, world.")
 
-(add-to-list 'default-frame-alist
-;;           '(font . "-apple-Helvetica_Neue-medium-normal-normal-*-13-*-*-*-p-0-iso10646-1"))
-             '(font . "-apple-Menlo-medium-normal-normal-*-11-*-*-*-m-0-iso10646-1"))
+;; basic initial styling
 
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+
+(add-to-list 'default-frame-alist
+;;           '(font . "-apple-Helvetica_Neue-medium-normal-normal-*-13-*-*-*-p-0-iso10646-1"))
+             '(font . "-apple-Menlo-medium-normal-normal-*-11-*-*-*-m-0-iso10646-1"))
+(add-to-list 'default-frame-alist '(left-fringe . 1))
+(add-to-list 'default-frame-alist '(right-fringe . 1))
+(setq-default indicate-empty-lines nil)
 
 ;; load path etc.
 
