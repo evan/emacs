@@ -6,8 +6,8 @@
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
 (add-to-list 'default-frame-alist
-;;           '(font . "-apple-Helvetica_Neue-medium-normal-normal-*-13-*-*-*-p-0-iso10646-1"))
-             '(font . "-apple-Menlo-medium-normal-normal-*-11-*-*-*-m-0-iso10646-1"))
+;;           '(font . "-apple-Verdana-medium-normal-normal-*-12-*-*-*-p-0-iso10646-1"))
+             '(font . "-apple-Verdana-medium-normal-normal-*-12-*-*-*-m-0-iso10646-1"))
 (add-to-list 'default-frame-alist '(left-fringe . 1))
 (add-to-list 'default-frame-alist '(right-fringe . 1))
 
