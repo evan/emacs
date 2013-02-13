@@ -230,6 +230,8 @@ Ported to Emacs by Greg Pfeil, http://ethanschoonover.com/solarized."
                   (eshell-test-ok-face ((t (:foreground ,green-hi :bold t))))
                   (excerpt ((t (:italic t))))
                   (fixed ((t (:bold t))))
+                  (flymake-errline ((t (:background ,red-bg))))
+                  (flymake-warnline ((t (:background ,purple-bg))))
                   (flyspell-duplicate-face ((t (:foreground ,yellow-hi :bold t :underline t))))
                   (flyspell-incorrect-face ((t (:foreground ,orange-hi :bold t :underline t))))
                   (font-lock-builtin-face ((t (:foreground ,purple-fg))))
