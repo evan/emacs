@@ -11,13 +11,25 @@
 (add-to-list 'default-frame-alist '(left-fringe . 1))
 (add-to-list 'default-frame-alist '(right-fringe . 1))
 
-;; load path etc.
+;; basic helper functions and definitions
+
+(defun concat-path (&rest elems)
+  "Concats path segments in a system agnostic manner"
+  (if (= 1 (length elems))
+      (car elems)
+    (concat (file-name-as-directory (car elems)) (apply 'concat-path (cdr elems)))))
 
 (setq dotfiles-dir (file-name-directory (or (buffer-file-name) load-file-name)))
+(setq local-lib-dir (concat-path dotfiles-dir "lib"))
+(setq local-extras-dir (concat-path dotfiles-dir "local"))
+(setq custom-file (concat dotfiles-dir "custom.el"))
+
+;; load path etc.
 
 (add-to-list 'load-path dotfiles-dir)
+(add-to-list 'load-path local-lib-dir)
 
-(setq custom-file (concat dotfiles-dir "custom.el"))
+;(when (file-exists-p local-extras-dir) (add-to-list 'load-path local-extras-dir))
 
 ;; packages and manifest
 
@@ -58,17 +70,9 @@
 
 ;; local config bootstrap
 
-(defun concat-path (&rest elems)
-  "Concats path segments in a system agnostic manner"
-  (if (= 1 (length elems))
-    (car elems)
-    (concat (file-name-as-directory (car elems)) (apply 'concat-path (cdr elems)))))
-
-(setq local-extras-dir (concat-path dotfiles-dir "local"))
-
-(if (file-exists-p local-extras-dir)
-    (mapc (lambda (extra) (load (concat-path local-extras-dir extra)))
-          (directory-files local-extras-dir nil ".*el$")))
+(when (file-exists-p local-extras-dir)
+  (mapc (lambda (extra) (load (concat-path local-extras-dir extra)))
+        (directory-files local-extras-dir nil ".*el$")))
 
 (load custom-file 'noerror)
 
