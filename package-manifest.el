@@ -21,4 +21,5 @@
  (starter-kit-js . nil)
  (starter-kit-lisp . nil)
  (starter-kit-ruby . nil)
- (yaml-mode . nil))
+ (yaml-mode . nil)
+ (auto-complete . nil))
