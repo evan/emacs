@@ -1,3 +1,5 @@
+(setq ruby-insert-encoding-magic-comment nil)
+
 (defun ruby-beautify-buffer ()
   (interactive)
   (let (p rb)
