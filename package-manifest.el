@@ -22,4 +22,5 @@
  (starter-kit-lisp . nil)
  (starter-kit-ruby . nil)
  (yaml-mode . nil)
- (auto-complete . nil))
+ (auto-complete . nil)
+ (rust-mode . nil))
