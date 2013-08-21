@@ -101,3 +101,4 @@
 
 (defadvice load (after m-prioritize-global-keys activate)
   (m-prioritize-global-keys))
+(put 'narrow-to-region 'disabled nil)
