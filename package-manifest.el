@@ -23,4 +23,5 @@
  (starter-kit-ruby . nil)
  (yaml-mode . nil)
  (auto-complete . nil)
- (rust-mode . nil))
+ (rust-mode . nil)
+ (github-browse-file . nil))
