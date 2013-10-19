@@ -101,4 +101,8 @@
 
 (defadvice load (after m-prioritize-global-keys activate)
   (m-prioritize-global-keys))
+
 (put 'narrow-to-region 'disabled nil)
+
+(auto-fill-mode -1)
+(remove-hook 'text-mode-hook #'turn-on-auto-fill)
